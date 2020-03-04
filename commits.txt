@@ -1,0 +1,6 @@
+Modifications:
+  General:
+    + Primer Commit
+  SyntaxAnalysis:
+    + Lectura archivo.
+    + Contador palabras reservadas del lenguaje: print, import, def, return, ...
