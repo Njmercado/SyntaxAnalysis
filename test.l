@@ -20,23 +20,20 @@ LONGINT {INT}("L"|"l")
 DEC {INT}*\.({DIGITS}("e"(\+|\-)?{DIGITS})?)?
 IMAGINARY ({INT}|{DEC})("J"|"j")
 IDENTIFIER ({LETTER}|"_")({LETTER}|{DIGIT}|"_")*
-STRINGS (\"[^\n]\")|(\'[^\n]*\')
+STRINGS (\".*\")|(\'.*\')
 
 COMMENT \#.*
 
 %%
-("continue"|"range"|"and"|"else"|"if"|"break"|"return"|"def"|"continue"|"elif"|"for"|"import"|"in"|"is"|"not"|"or"|"pass"|"print"|"while"|"len"|"True"|"False") {
+("range"|"and"|"else"|"if"|"break"|"return"|"def"|"continue"|"elif"|"for"|"import"|"in"|"is"|"not"|"or"|"pass"|"print"|"while"|"True"|"False") {
   for(int i = 0; i < yyleng; i++) {
     printf("%c", yytext[i] - ('a'-'A'));
   }
 }
 
-{INT} {printf(" entero=%s ", yytext);}
-{LONGINT} {printf(" longentero=%s ", yytext);}
-{DEC} {printf(" decimal=%s ", yytext);}
-{IMAGINARY} {printf(" imaginario=%s ", yytext);}
-
+{STRINGS} {printf(" cadena=%s ", yytext);}
 {IDENTIFIER} {
+
   bool exist = false;
   //identifierCounter, porque es el tamaño, usado, del array.
   for(int i = 0; i < identifierCounter; i++){
@@ -54,9 +51,6 @@ COMMENT \#.*
     printf(" id%d=%s ", identifierCounter++, yytext);
   } 
 }
-
-{STRINGS} {printf(" cadena=%s ", yytext);}
-{COMMENT} {;}
 
 \+ {printf(" op_suma=%s ", yytext);}
 \- {printf(" op_resta=%s ", yytext);}
@@ -84,6 +78,12 @@ COMMENT \#.*
 \{ {printf(" llaveabre=%s ", yytext);}
 \} {printf(" llavecierra=%s ", yytext);}
 \: {printf(" dospuntos=%s ", yytext);}
+
+{INT} {printf(" entero=%s ", yytext);}
+{LONGINT} {printf(" longentero=%s ", yytext);}
+{DEC} {printf(" decimal=%s ", yytext);}
+{IMAGINARY} {printf(" imaginario=%s ", yytext);}
+{COMMENT} {;}
 %%
 
 int yywrap(void){}
@@ -96,5 +96,11 @@ int main() {
   yyin = fp;
 
   yylex();
+
+  printf("\n\n%d identificadores: \n", identifierCounter);
+  for(int i = 0; i < identifierCounter; i++) {
+    printf("id%d=%s\n", ids[i].id, ids[i].name);
+  }
+
   return 0;
 }

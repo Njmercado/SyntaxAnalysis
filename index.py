@@ -1,8 +1,26 @@
-i = +0
-i = i + 1
-j = 30.3e-100j
-h = "hola mundo
-asdfasdf"
-h = 'hola mundo x2' #hola mdom
+def eval(xi, exp):
+  ans = False
+  for i in range(len(exp)) :
+    part =? True
+    for j in range(len(exp[i])) :
+      part = part and xi[exp[i][j]]
+    ans = ans or part
+  return ans
 
-#Hola mundo hp
+# comentario ignorado
+while 2*i<=40000L
+  h = 3.4e-5 + 5j
+  if i == 0:
+    break
+
+def otra_fun():
+  pass
+
+print('Esta es la respuesta', con, 'y la expresión ',3*i+5*(7-x))
+
+#string de la hipotesis
+table = []
+y = []
+#i = 0
+numeric = 1+2+4+5+6
+numeric = +1
