@@ -1,6 +1,8 @@
 Modifications:
-  General:
-    + Primer Commit
   SyntaxAnalysis:
-    + Lectura archivo.
-    + Contador palabras reservadas del lenguaje: print, import, def, return, ...
+    + Identificadores terminado.
+    + Ya identifica los numeros: enteros, decimales, imaginarios.
+    + Ya identifica las cádenas.
+    + Ya identifica las variables, identificadores. Para poder repetir identificadores se aplicó una funcion de busqueda.
+    ? Este programa solo soporta 100 ids. Se puede aumentar la cantidad.
+    ? Agregar la identificación de los errores.
