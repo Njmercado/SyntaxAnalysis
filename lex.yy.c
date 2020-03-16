@@ -816,7 +816,7 @@ YY_RULE_SETUP
 #line 28 "test.l"
 {
   for(int i = 0; i < yyleng; i++) {
-    printf("%c", yytext[i] - ('a'-'A'));
+    fprintf(yyout,"%c", yytext[i] - ('a'-'A'));
   }
 }
 	YY_BREAK
@@ -824,7 +824,7 @@ case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
 #line 34 "test.l"
-{printf(" cadena=%s ", yytext);}
+{fprintf(yyout," cadena=%s ", yytext);}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
@@ -835,7 +835,7 @@ YY_RULE_SETUP
   //identifierCounter, porque es el tamaño, usado, del array.
   for(int i = 0; i < identifierCounter; i++){
     if( strcmp(ids[i].name, yytext) == 0 ){
-      printf(" id%d=%s ", ids[i].id, yytext); 
+      fprintf(yyout," id%d=%s ", ids[i].id, yytext); 
       exist = true;
       break;
     } 
@@ -845,159 +845,159 @@ YY_RULE_SETUP
     strcpy(id.name, yytext);
     id.id = identifierCounter;
     ids[identifierCounter] = id;
-    printf(" id%d=%s ", identifierCounter++, yytext);
+    fprintf(yyout," id%d=%s ", identifierCounter++, yytext);
   } 
 }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
 #line 55 "test.l"
-{printf(" entero=%s ", yytext);}
+{fprintf(yyout," entero=%s ", yytext);}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
 #line 56 "test.l"
-{printf(" longentero=%s ", yytext);}
+{fprintf(yyout," longentero=%s ", yytext);}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
 #line 57 "test.l"
-{printf(" decimal=%s ", yytext);}
+{fprintf(yyout," decimal=%s ", yytext);}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
 #line 58 "test.l"
-{printf(" imaginario=%s ", yytext);}
+{fprintf(yyout," imaginario=%s ", yytext);}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
 #line 60 "test.l"
-{printf(" op_suma=%s ", yytext);}
+{fprintf(yyout," op_suma=%s ", yytext);}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
 #line 61 "test.l"
-{printf(" op_resta=%s ", yytext);}
+{fprintf(yyout," op_resta=%s ", yytext);}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
 #line 62 "test.l"
-{printf(" op_mult=%s ", yytext);}
+{fprintf(yyout," op_mult=%s ", yytext);}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
 #line 63 "test.l"
-{printf(" op_exponente=%s ", yytext);}
+{fprintf(yyout," op_exponente=%s ", yytext);}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
 #line 64 "test.l"
-{printf(" op_division=%s ", yytext);}
+{fprintf(yyout," op_division=%s ", yytext);}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
 #line 65 "test.l"
-{printf(" op_divent=%s ", yytext);}
+{fprintf(yyout," op_divent=%s ", yytext);}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
 #line 66 "test.l"
-{printf(" op_leftshift=%s ", yytext);}
+{fprintf(yyout," op_leftshift=%s ", yytext);}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
 #line 67 "test.l"
-{printf(" op_rightshift=%s ", yytext);}
+{fprintf(yyout," op_rightshift=%s ", yytext);}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
 #line 68 "test.l"
-{printf(" op_complemento=%s ", yytext);}
+{fprintf(yyout," op_complemento=%s ", yytext);}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
 #line 69 "test.l"
-{printf(" op_igual=%s ", yytext);}
+{fprintf(yyout," op_igual=%s ", yytext);}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
 #line 70 "test.l"
-{printf(" op_noigual=%s ", yytext);}
+{fprintf(yyout," op_noigual=%s ", yytext);}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
 #line 71 "test.l"
-{printf(" op_assign=%s ", yytext);}
+{fprintf(yyout," op_assign=%s ", yytext);}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
 #line 72 "test.l"
-{printf(" op_modulo=%s ", yytext);}
+{fprintf(yyout," op_modulo=%s ", yytext);}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
 #line 73 "test.l"
-{printf(" op_y=%s ", yytext);}
+{fprintf(yyout," op_y=%s ", yytext);}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
 #line 74 "test.l"
-{printf(" op_menor=%s ", yytext);}
+{fprintf(yyout," op_menor=%s ", yytext);}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
 #line 75 "test.l"
-{printf(" op_menorig=%s ", yytext);}
+{fprintf(yyout," op_menorig=%s ", yytext);}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
 #line 76 "test.l"
-{printf(" op_mayorig=%s ", yytext);}
+{fprintf(yyout," op_mayorig=%s ", yytext);}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
 #line 77 "test.l"
-{printf(" op_mayor=%s ", yytext);}
+{fprintf(yyout," op_mayor=%s ", yytext);}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
 #line 78 "test.l"
-{printf(" coma=%s ", yytext);}
+{fprintf(yyout," coma=%s ", yytext);}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
 #line 79 "test.l"
-{printf(" parabre=%s ", yytext);}
+{fprintf(yyout," parabre=%s ", yytext);}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
 #line 80 "test.l"
-{printf(" parcierra=%s ", yytext);}
+{fprintf(yyout," parcierra=%s ", yytext);}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
 #line 81 "test.l"
-{printf(" corabre=%s ", yytext);}
+{fprintf(yyout," corabre=%s ", yytext);}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
 #line 82 "test.l"
-{printf(" corcierra=%s ", yytext);}
+{fprintf(yyout," corcierra=%s ", yytext);}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
 #line 83 "test.l"
-{printf(" llaveabre=%s ", yytext);}
+{fprintf(yyout," llaveabre=%s ", yytext);}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
 #line 84 "test.l"
-{printf(" llavecierra=%s ", yytext);}
+{fprintf(yyout," llavecierra=%s ", yytext);}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
 #line 85 "test.l"
-{printf(" dospuntos=%s ", yytext);}
+{fprintf(yyout," dospuntos=%s ", yytext);}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
@@ -2021,17 +2021,22 @@ int yywrap(void){}
 
 int main() {
 
-  FILE *fp;
+  FILE *fr, *fw;
 
-  fp = fopen("index.py", "r");
-  yyin = fp;
+  fr = fopen("index.py", "r");
+  fw = fopen("output.txt", "w");
+  yyin = fr;
+  yyout = fw;
 
   yylex();
 
-  printf("\n\n%d identificadores: \n", identifierCounter);
+  fprintf(fw, "\n\n%d identificadores: \n", identifierCounter);
   for(int i = 0; i < identifierCounter; i++) {
-    printf("id%d=%s\n", ids[i].id, ids[i].name);
+    fprintf(fw, "id%d=%s\n", ids[i].id, ids[i].name);
   }
+
+  fclose(fr);
+  fclose(fw);
 
   return 0;
 }

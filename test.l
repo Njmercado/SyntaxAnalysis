@@ -27,18 +27,18 @@ COMMENT \#.*
 %%
 ("range"|"and"|"else"|"if"|"break"|"return"|"def"|"continue"|"elif"|"for"|"import"|"in"|"is"|"not"|"or"|"pass"|"print"|"while"|"True"|"False") {
   for(int i = 0; i < yyleng; i++) {
-    printf("%c", yytext[i] - ('a'-'A'));
+    fprintf(yyout,"%c", yytext[i] - ('a'-'A'));
   }
 }
 
-{STRINGS} {printf(" cadena=%s ", yytext);}
+{STRINGS} {fprintf(yyout," cadena=%s ", yytext);}
 {IDENTIFIER} {
 
   bool exist = false;
   //identifierCounter, porque es el tamaño, usado, del array.
   for(int i = 0; i < identifierCounter; i++){
     if( strcmp(ids[i].name, yytext) == 0 ){
-      printf(" id%d=%s ", ids[i].id, yytext); 
+      fprintf(yyout," id%d=%s ", ids[i].id, yytext); 
       exist = true;
       break;
     } 
@@ -48,41 +48,41 @@ COMMENT \#.*
     strcpy(id.name, yytext);
     id.id = identifierCounter;
     ids[identifierCounter] = id;
-    printf(" id%d=%s ", identifierCounter++, yytext);
+    fprintf(yyout," id%d=%s ", identifierCounter++, yytext);
   } 
 }
 
-{INT} {printf(" entero=%s ", yytext);}
-{LONGINT} {printf(" longentero=%s ", yytext);}
-{DEC} {printf(" decimal=%s ", yytext);}
-{IMAGINARY} {printf(" imaginario=%s ", yytext);}
+{INT} {fprintf(yyout," entero=%s ", yytext);}
+{LONGINT} {fprintf(yyout," longentero=%s ", yytext);}
+{DEC} {fprintf(yyout," decimal=%s ", yytext);}
+{IMAGINARY} {fprintf(yyout," imaginario=%s ", yytext);}
 
-\+ {printf(" op_suma=%s ", yytext);}
-\- {printf(" op_resta=%s ", yytext);}
-\* {printf(" op_mult=%s ", yytext);}
-\*\* {printf(" op_exponente=%s ", yytext);}
-\/ {printf(" op_division=%s ", yytext);}
-\/\/ {printf(" op_divent=%s ", yytext);}
-\<\< {printf(" op_leftshift=%s ", yytext);}
-\>\> {printf(" op_rightshift=%s ", yytext);}
-\~ {printf(" op_complemento=%s ", yytext);}
-\=\= {printf(" op_igual=%s ", yytext);}
-\!\=|\<\> {printf(" op_noigual=%s ", yytext);}
-\= {printf(" op_assign=%s ", yytext);}
-\% {printf(" op_modulo=%s ", yytext);}
-\& {printf(" op_y=%s ", yytext);}
-\< {printf(" op_menor=%s ", yytext);}
-\<\= {printf(" op_menorig=%s ", yytext);}
-\>\= {printf(" op_mayorig=%s ", yytext);}
-\> {printf(" op_mayor=%s ", yytext);}
-\, {printf(" coma=%s ", yytext);}
-\( {printf(" parabre=%s ", yytext);}
-\) {printf(" parcierra=%s ", yytext);}
-\[ {printf(" corabre=%s ", yytext);}
-\] {printf(" corcierra=%s ", yytext);}
-\{ {printf(" llaveabre=%s ", yytext);}
-\} {printf(" llavecierra=%s ", yytext);}
-\: {printf(" dospuntos=%s ", yytext);}
+\+ {fprintf(yyout," op_suma=%s ", yytext);}
+\- {fprintf(yyout," op_resta=%s ", yytext);}
+\* {fprintf(yyout," op_mult=%s ", yytext);}
+\*\* {fprintf(yyout," op_exponente=%s ", yytext);}
+\/ {fprintf(yyout," op_division=%s ", yytext);}
+\/\/ {fprintf(yyout," op_divent=%s ", yytext);}
+\<\< {fprintf(yyout," op_leftshift=%s ", yytext);}
+\>\> {fprintf(yyout," op_rightshift=%s ", yytext);}
+\~ {fprintf(yyout," op_complemento=%s ", yytext);}
+\=\= {fprintf(yyout," op_igual=%s ", yytext);}
+\!\=|\<\> {fprintf(yyout," op_noigual=%s ", yytext);}
+\= {fprintf(yyout," op_assign=%s ", yytext);}
+\% {fprintf(yyout," op_modulo=%s ", yytext);}
+\& {fprintf(yyout," op_y=%s ", yytext);}
+\< {fprintf(yyout," op_menor=%s ", yytext);}
+\<\= {fprintf(yyout," op_menorig=%s ", yytext);}
+\>\= {fprintf(yyout," op_mayorig=%s ", yytext);}
+\> {fprintf(yyout," op_mayor=%s ", yytext);}
+\, {fprintf(yyout," coma=%s ", yytext);}
+\( {fprintf(yyout," parabre=%s ", yytext);}
+\) {fprintf(yyout," parcierra=%s ", yytext);}
+\[ {fprintf(yyout," corabre=%s ", yytext);}
+\] {fprintf(yyout," corcierra=%s ", yytext);}
+\{ {fprintf(yyout," llaveabre=%s ", yytext);}
+\} {fprintf(yyout," llavecierra=%s ", yytext);}
+\: {fprintf(yyout," dospuntos=%s ", yytext);}
 
 {COMMENT} {;}
 %%
@@ -91,17 +91,22 @@ int yywrap(void){}
 
 int main() {
 
-  FILE *fp;
+  FILE *fr, *fw;
 
-  fp = fopen("index.py", "r");
-  yyin = fp;
+  fr = fopen("index.py", "r");
+  fw = fopen("output.txt", "w");
+  yyin = fr;
+  yyout = fw;
 
   yylex();
 
-  printf("\n\n%d identificadores: \n", identifierCounter);
+  fprintf(fw, "\n\n%d identificadores: \n", identifierCounter);
   for(int i = 0; i < identifierCounter; i++) {
-    printf("id%d=%s\n", ids[i].id, ids[i].name);
+    fprintf(fw, "id%d=%s\n", ids[i].id, ids[i].name);
   }
+
+  fclose(fr);
+  fclose(fw);
 
   return 0;
 }

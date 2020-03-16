@@ -1,0 +1,40 @@
+DEF  id0=eval  parabre=(  id1=xi  coma=,   id2=exp  parcierra=)  dospuntos=: 
+   id3=ans   op_assign==  &ALSE
+  FOR  id4=i  IN RANGE parabre=(  id5=len  parabre=(  id2=exp  parcierra=)  parcierra=)   dospuntos=: 
+     id6=part   op_assign== ? 4RUE
+    FOR  id7=j  IN RANGE parabre=(  id5=len  parabre=(  id2=exp  corabre=[  id4=i  corcierra=]  parcierra=)  parcierra=)   dospuntos=: 
+       id6=part   op_assign==   id6=part  AND  id1=xi  corabre=[  id2=exp  corabre=[  id4=i  corcierra=]  corabre=[  id7=j  corcierra=]  corcierra=] 
+     id3=ans   op_assign==   id3=ans  OR  id6=part 
+  RETURN  id3=ans 
+
+
+WHILE  entero=2  op_mult=*  id4=i  op_menorig=<=  longentero=40000L 
+   id8=h   op_assign==   decimal=3.4e-5   op_suma=+   imaginario=5j 
+  IF  id4=i   op_igual===   entero=0  dospuntos=: 
+    BREAK
+
+DEF  id9=otra_fun  parabre=(  parcierra=)  dospuntos=: 
+  PASS
+
+PRINT parabre=(  cadena='Esta es la respuesta'  coma=,   id10=con  coma=,   cadena='y la expresión '  coma=,  entero=3  op_mult=*  id4=i  op_suma=+  entero=5  op_mult=*  parabre=(  entero=7  op_resta=-  id11=x  parcierra=)  parcierra=) 
+
+
+ id12=table   op_assign==   corabre=[  corcierra=] 
+ id13=y   op_assign==   corabre=[  corcierra=] 
+
+
+14 identificadores: 
+id0=eval
+id1=xi
+id2=exp
+id3=ans
+id4=i
+id5=len
+id6=part
+id7=j
+id8=h
+id9=otra_fun
+id10=con
+id11=x
+id12=table
+id13=y
