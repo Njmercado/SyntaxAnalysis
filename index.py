@@ -22,5 +22,3 @@ print('Esta es la respuesta', con, 'y la expresión ',3*i+5*(7-x))
 table = []
 y = []
 #i = 0
-numeric = 1+2+4+5+6
-numeric = +1

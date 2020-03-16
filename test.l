@@ -20,7 +20,7 @@ LONGINT {INT}("L"|"l")
 DEC {INT}*\.({DIGITS}("e"(\+|\-)?{DIGITS})?)?
 IMAGINARY ({INT}|{DEC})("J"|"j")
 IDENTIFIER ({LETTER}|"_")({LETTER}|{DIGIT}|"_")*
-STRINGS (\".*\")|(\'.*\')
+STRINGS \'[^(\'|\")]*\'|\'[^(\'|\")]*\'
 
 COMMENT \#.*
 
