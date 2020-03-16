@@ -15,7 +15,7 @@ DIGIT [0-9]
 LETTER [a-zA-Z]
 
 DIGITS {DIGIT}{DIGIT}*
-INT (\+|\-)?{DIGITS}
+INT {DIGITS}
 LONGINT {INT}("L"|"l")
 DEC {INT}*\.({DIGITS}("e"(\+|\-)?{DIGITS})?)?
 IMAGINARY ({INT}|{DEC})("J"|"j")
@@ -52,6 +52,11 @@ COMMENT \#.*
   } 
 }
 
+{INT} {printf(" entero=%s ", yytext);}
+{LONGINT} {printf(" longentero=%s ", yytext);}
+{DEC} {printf(" decimal=%s ", yytext);}
+{IMAGINARY} {printf(" imaginario=%s ", yytext);}
+
 \+ {printf(" op_suma=%s ", yytext);}
 \- {printf(" op_resta=%s ", yytext);}
 \* {printf(" op_mult=%s ", yytext);}
@@ -79,10 +84,6 @@ COMMENT \#.*
 \} {printf(" llavecierra=%s ", yytext);}
 \: {printf(" dospuntos=%s ", yytext);}
 
-{INT} {printf(" entero=%s ", yytext);}
-{LONGINT} {printf(" longentero=%s ", yytext);}
-{DEC} {printf(" decimal=%s ", yytext);}
-{IMAGINARY} {printf(" imaginario=%s ", yytext);}
 {COMMENT} {;}
 %%
 
