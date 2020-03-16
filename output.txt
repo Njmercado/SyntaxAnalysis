@@ -1,7 +1,7 @@
 DEF  id0=eval  parabre=(  id1=xi  coma=,   id2=exp  parcierra=)  dospuntos=: 
    id3=ans   op_assign==  &ALSE
   FOR  id4=i  IN RANGE parabre=(  id5=len  parabre=(  id2=exp  parcierra=)  parcierra=)   dospuntos=: 
-     id6=part   op_assign== ? 4RUE
+     id6=part   op_assign==  ERROR=? 4RUE
     FOR  id7=j  IN RANGE parabre=(  id5=len  parabre=(  id2=exp  corabre=[  id4=i  corcierra=]  parcierra=)  parcierra=)   dospuntos=: 
        id6=part   op_assign==   id6=part  AND  id1=xi  corabre=[  id2=exp  corabre=[  id4=i  corcierra=]  corabre=[  id7=j  corcierra=]  corcierra=] 
      id3=ans   op_assign==   id3=ans  OR  id6=part 
@@ -20,7 +20,7 @@ PRINT parabre=(  cadena='Esta es la respuesta'  coma=,   id10=con  coma=,   cade
 
 
  id12=table   op_assign==   corabre=[  corcierra=] 
- id13=y   op_assign==   corabre=[  corcierra=] 
+ id13=y   op_assign==   ERROR=123ABC
 
 
 14 identificadores: 
@@ -38,3 +38,5 @@ id10=con
 id11=x
 id12=table
 id13=y
+
+ 2 Errores

@@ -8,6 +8,7 @@
   };
 
   int identifierCounter = 0;
+  int errors = 0;
   struct Identifier ids[100];
 %}
 
@@ -21,6 +22,7 @@ DEC {INT}*\.({DIGITS}("e"(\+|\-)?{DIGITS})?)?
 IMAGINARY ({INT}|{DEC})("J"|"j")
 IDENTIFIER ({LETTER}|"_")({LETTER}|{DIGIT}|"_")*
 STRINGS \'[^(\'|\")]*\'|\'[^(\'|\")]*\'
+ERROR ([^(" "*|\n|\+|\%|\&|\-|\*|\*\*|\/|\/\/|\<|\<\<|\<=|\>\=|\>\>|\>|\~|\=|\=\=|\!\=|\=|\<\>|\,|\(|\)|\[|\]|\{|\}|\:|{INT}|{LONGINT}|{DEC}|{IMAGINARY}|{IDENTIFIER}|{STRINGS}|{COMMENT})]|{INT}{IDENTIFIER})
 
 COMMENT \#.*
 
@@ -85,6 +87,8 @@ COMMENT \#.*
 \: {fprintf(yyout," dospuntos=%s ", yytext);}
 
 {COMMENT} {;}
+
+{ERROR} {fprintf(yyout, " ERROR=%s", yytext); errors++;}
 %%
 
 int yywrap(void){}
@@ -104,6 +108,7 @@ int main() {
   for(int i = 0; i < identifierCounter; i++) {
     fprintf(fw, "id%d=%s\n", ids[i].id, ids[i].name);
   }
+  fprintf(fw, "\n %d Errores", errors);
 
   fclose(fr);
   fclose(fw);

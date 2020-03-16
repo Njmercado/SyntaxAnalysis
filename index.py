@@ -20,5 +20,5 @@ print('Esta es la respuesta', con, 'y la expresión ',3*i+5*(7-x))
 
 #string de la hipotesis
 table = []
-y = []
+y = 123ABC
 #i = 0
